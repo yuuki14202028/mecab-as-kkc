@@ -1,3 +1,6 @@
 [submodule "mozc"]
 	path = mozc
 	url = https://github.com/google/mozc.git
+[submodule "merge-ut-dictionaries"]
+	path = merge-ut-dictionaries
+	url = https://github.com/yuuki14202028/merge-ut-dictionaries
