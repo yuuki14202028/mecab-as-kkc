@@ -29,7 +29,7 @@ def to_matrix(connections):
     for lid in range(num_classes):
         for rid in range(num_classes):
             line = '%s %s %s' % (lid, rid,
-                                 connections[lid * num_classes + rid + 1])
+                                 (connections[lid * num_classes + rid + 1]).decode('utf8'))
             connection_matrix.append(line)
     return '\n'.join(connection_matrix)
 
