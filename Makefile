@@ -10,7 +10,7 @@ all: build
 
 update_mozc:
 	git submodule init
-	git submodule update
+	git submodule update --remote
 
 $(MATRIX_DEF):
 	./script/generate_matrix_def.py

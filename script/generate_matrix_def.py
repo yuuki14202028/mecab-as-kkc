@@ -6,12 +6,21 @@ ROOT_DIR = os.path.join(os.path.dirname(__file__), '../')
 CONNECTION_DEFLATE_PATH = os.path.join(ROOT_DIR,
                                        'mozc/src/data/dictionary_oss/'
                                        'connection.deflate')
+
+CONNECTION_PATH = os.path.join(ROOT_DIR,
+                                       'mozc/src/data/dictionary_oss/'
+                                       'connection_single_column.txt')
 MATRIX_DEF_PATH = os.path.join(ROOT_DIR, 'mecab-as-kkc/matrix.def')
 
 
 def decompress_deflate(path):
     with open(CONNECTION_DEFLATE_PATH, 'rb') as f:
         return zlib.decompress(f.read()).decode()
+
+
+def connection_open(path):
+    with open(CONNECTION_PATH, 'rb') as f:
+        return f.read()
 
 
 def to_matrix(connections):
@@ -26,7 +35,7 @@ def to_matrix(connections):
 
 
 def main():
-    connections = decompress_deflate(CONNECTION_DEFLATE_PATH)
+    connections = connection_open(CONNECTION_PATH)
     connections = connections.splitlines()
     connection_matrix = to_matrix(connections)
     with open(MATRIX_DEF_PATH, 'w') as f:
